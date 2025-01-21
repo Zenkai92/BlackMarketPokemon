@@ -1,5 +1,5 @@
 import ApiFetch from '../../api/ApiFetch';
-import "FetchPokemon.scss";
+import "./FetchPokemon.scss";
 
 export default function FetchPokemon() {
   return (

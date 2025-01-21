@@ -3,89 +3,162 @@
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #286dbb;
-  font-family: pocketMonk, Arial, sans-serif;
+  background-color: #f2c94c; /* Couleur jaune Pikachu */
+  font-family: "Pokemon", Arial, sans-serif;
 
   &__content {
     width: 50%;
+    text-align: center;
   }
 }
 
 .loader {
-  width: 50%;
-  height: 50%;
-  background-color: #fff;
-  transform: rotateZ(45deg);
-  perspective: 1000px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border: 10px solid #3b4cca; /* Bleu Pokémon */
+  border-top: 10px solid #ff0000; /* Rouge Pokémon */
   border-radius: 50%;
-  color: #ffcc01;
-}
-.loader:before,
-.loader:after {
-  content: "";
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  border-radius: 50%;
-  transform: rotateX(70deg);
-  animation: 1s spin linear infinite;
-}
-.loader::after {
-  content: "En chargement ...";
-  font-size: 6rem;
-  text-align: center;
-}
-.loader:after {
-  font-size: 5rem;
-  color: #fff;
-  transform: rotateY(70deg);
-  animation-delay: 0.4s;
-}
+  animation: spin 1s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-@keyframes rotate {
-  0% {
-    transform: translate(-50%, -50%) rotateZ(0deg);
+  /* La Poké Ball au centre */
+  &::before {
+    content: "";
+    width: 20%;
+    height: 20%;
+    background-color: #fff;
+    border: 4px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
   }
-  100% {
-    transform: translate(-50%, -50%) rotateZ(360deg);
-  }
-}
 
-@keyframes rotateccw {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(-360deg);
+  &::after {
+    content: "Chargement Pokémon...";
+    position: absolute;
+    font-size: 1.5rem;
+    color: #3b4cca;
+    top: 130%;
+    text-transform: uppercase;
   }
 }
 
 @keyframes spin {
-  0%,
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
-    box-shadow: 0.2em 0px 0 0px currentcolor;
+    transform: rotate(360deg);
   }
-  12% {
-    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+}
+
+.error {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff0000; /* Rouge Pokémon */
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid #000;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card {
+  width: 150px;
+  background-color: #3b4cca; /* Bleu Pokémon */
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
   }
-  25% {
-    box-shadow: 0 0.2em 0 0px currentcolor;
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border: 3px solid #ffcc01; /* Jaune Pokémon */
+    border-radius: 50%;
+    background-color: #fff;
   }
-  37% {
-    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #ffcc01; /* Jaune Pokémon */
   }
-  50% {
-    box-shadow: -0.2em 0 0 0 currentcolor;
+}
+
+.pokemon-details {
+  margin-top: 20px;
+  text-align: center;
+  background-color: #ffcc01; /* Jaune Pokémon */
+  color: #3b4cca; /* Bleu Pokémon */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
   }
-  62% {
-    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+
+  img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 4px solid #3b4cca;
+    border-radius: 50%;
+    background-color: #fff;
   }
-  75% {
-    box-shadow: 0px -0.2em 0 0 currentcolor;
+
+  p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    strong {
+      color: #000;
+    }
   }
-  87% {
-    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+
+  button {
+    background-color: #ff0000; /* Rouge Pokémon */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #d40000; /* Rouge foncé */
+    }
   }
 }

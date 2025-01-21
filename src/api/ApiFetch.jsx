@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./loader.scss"
+import "./loader.scss";
 
 export default function ApiFetch({ children, url }) {
     const [data, setData] = useState(null);
@@ -10,26 +10,26 @@ export default function ApiFetch({ children, url }) {
         fetch(url, {
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
             },
         })
-            .then((reponse)=> {
-                if (!reponse.ok) {
+            .then((response) => {
+                if (!response.ok) {
                     throw new Error('Erreur de chargement');
                 }
-                return reponse.json();
+                return response.json();
             })
-            .then((jsonData) =>{
+            .then((jsonData) => {
                 setData(jsonData);
                 setError(null);
                 setIsLoading(false);
-
             })
-            .catch((err)=>{
+            .catch((err) => {
                 setError(err.message);
                 setIsLoading(false);
             });
     }, [url]);
+
     if (isLoading) {
         return (
             <div className="container">
@@ -37,11 +37,13 @@ export default function ApiFetch({ children, url }) {
                     <span className="loader"></span>
                 </div>
             </div>
-        )
+        );
     }
 
-    if(error){
-        return <div className='error'>Erreur : {error}</div>
+    if (error) {
+        return <div className="error">Erreur : {error}</div>;
     }
-    return<>{data && children(data)}</>
+
+    // Appel de `children` en tant que fonction avec les données passées en argument
+    return <>{data && children(data)}</>;
 }

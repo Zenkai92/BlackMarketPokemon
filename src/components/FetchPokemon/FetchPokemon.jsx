@@ -1,63 +1,56 @@
+import { useState } from 'react';
 import ApiFetch from '../../api/ApiFetch';
-import "./FetchPokemon.scss";
+import './FetchPokemon.scss';
 
 export default function FetchPokemon() {
-  return (
-    <>
-      <ApiFetch url="https://pokeapi.co/api/v2/pokemon-form/?offset=0&limit=1025">
-        {({ data }) => (
-          <div>
-            {data
-              .filter((pokemon) => pokemon.sprites.front_default)
-              .map((pokemon) => (
-                <div key={pokemon.id}>
-                  <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                  <p>{pokemon.name}</p>
-                  <div
-                    style={{
-                      display: "inline-block",
-                      padding: "1em",
-                      transition: "transform 0.2s",
-                      position: "relative",
-                    }}
-                    onClick={(e) => {
-                      const pkmnInfo = e.currentTarget.querySelector(".pkmn-info");
-                      if (e.currentTarget.style.transform === "scale(1.1)") {
-                        e.currentTarget.style.transform = "scale(1)";
-                        pkmnInfo.style.display = "none";
-                      } else {
-                        e.currentTarget.style.transform = "scale(1.1)";
-                        pkmnInfo.style.display = "block";
-                      }
-                    }}
-                  >
-                    <img src={`${pokemon.sprites.front_default}/low.webp`} alt={pokemon.name} />
-                    <div
-                      className="pkmn-info"
-                      style={{
-                        display: "none",
-                        position: "absolute",
-                        top: "0",
-                        left: "0",
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        color: "white",
-                        padding: "1em",
-                        boxSizing: "border-box",
-                      }}
-                    >
-                      <p>ID: {pokemon.id}</p>
-                      <p>Name: {pokemon.name}</p>
-                      <img src={`${pokemon.sprites.front_default}/low.webp`} alt={pokemon.name} />
-                      {/* Add more information as needed */}
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+    const handlePokemonClick = async (url) => {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            setSelectedPokemon(data);
+        } catch (error) {
+            console.error('Erreur lors de la récupération des détails du Pokémon:', error);
+        }
+    };
+
+    return (
+        <div className="pokemon-page">
+            <ApiFetch url="https://pokeapi.co/api/v2/pokemon-form/?offset=0&limit=1025">
+                {(data) => (
+                    <div className="pokemon-container">
+                        {data.results.map((pokemon, index) => (
+                            <div
+                                key={index}
+                                className="pokemon-card"
+                                onClick={() => handlePokemonClick(pokemon.url)}
+                            >
+                                <img
+                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                                    alt={pokemon.name}
+                                />
+                                <p>{pokemon.name}</p>
+                            </div>
+                        ))}
                     </div>
-                  </div>
+                )}
+            </ApiFetch>
+
+            {selectedPokemon && (
+                <div className="pokemon-details">
+                    <h2>{selectedPokemon.name}</h2>
+                    <img
+                        src={selectedPokemon.sprites.front_default}
+                        alt={selectedPokemon.name}
+                    />
+                    <p><strong>ID:</strong> {selectedPokemon.id}</p>
+                    <p><strong>Type(s):</strong> {selectedPokemon.types.map(type => type.type.name).join(', ')}</p>
+                    <p><strong>Poids:</strong> {selectedPokemon.weight} kg</p>
+                    <p><strong>Taille:</strong> {selectedPokemon.height} m</p>
+                    <button onClick={() => setSelectedPokemon(null)}>Fermer</button>
                 </div>
-              ))}
-          </div>
-        )}
-      </ApiFetch>
-    </>
-  );
+            )}
+        </div>
+    );
 }

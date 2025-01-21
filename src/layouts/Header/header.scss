@@ -9,22 +9,29 @@
   border-radius: 15px;
   margin-bottom: 2rem;
 
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
   &__arrowToLeft {
     width: 2.5rem;
     cursor: pointer;
     transform: rotate(-90deg);
-    margin-right: 1rem;
+    margin-right: 0.5rem; /* Reduce the margin to bring the arrow closer to the text */
   }
 
   &__logo {
     width: 5rem;
     height: auto;
+    order: 2; /* Ensure the logo is on the right */
   }
 
   &__text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    order: 1; /* Ensure the text is on the left */
   }
 
   &__title {
@@ -35,10 +42,9 @@
   }
 
   p {
-    padding-left:15%;
     margin: 0;
     font-size: 1rem;
     color: #fff;
-    text-align: center;
+    text-align: left;
   }
 }

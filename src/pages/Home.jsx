@@ -6,7 +6,7 @@ export default function Home() {
     const { user } = useAuth();
     return (
         <div>
-            <Link to = "#">
+            <Link to = "/Produits">
                 <button>Voir les produits</button>
             </Link>
             <Link to = "#">

@@ -1,0 +1,41 @@
+@import "index.css";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #282c34;
+  border-radius: 15px;
+  margin: 2rem auto;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+
+  a {
+    text-decoration: none;
+    margin: 1rem 0;
+
+    button {
+      background-color: #61dafb;
+      color: #282c34;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+
+      &:hover {
+        background-color: #21a1f1;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .welcome-message {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}

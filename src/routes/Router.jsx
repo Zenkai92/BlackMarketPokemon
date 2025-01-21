@@ -8,7 +8,7 @@ export default function Router() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Pokemon" element={<FetchPokemon />} />
+        <Route path="/Produit" element={<FetchPokemon />} />
       </Routes>
     </AuthProvider>
   );

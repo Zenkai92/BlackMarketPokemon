@@ -18,9 +18,11 @@ export default function Header() {
                     <img className="header__arrowToLeft" src="./fleche.png" alt="Retour" />
                 </a>
             )}
-            <img className="header__logo" src="./Gromago-Mascotte" alt="Logo Gromago" />
-            <h1 className="header__title">ToupourleMAGO{displayName}</h1>
-            <p>Bienvenue sur plus grand marché noir de Unys </p>
+            <img className="header__logo" src="Gromago-Mascotte.png" alt="Logo Gromago" />
+            <div className="header__text">
+                <h1 className="header__title">ToupourleMAGO {displayName}</h1>
+                <p>Bienvenue sur plus grand marché noir de Unys</p>
+            </div>
         </div>
     );
 }

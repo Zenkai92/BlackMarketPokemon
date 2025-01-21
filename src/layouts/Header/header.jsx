@@ -24,7 +24,9 @@ export default function Header() {
                     <p>Bienvenue sur plus grand marché noir de Unys</p>
                 </div>
             </div>
+            <a href="/">
             <img className="header__logo" src="Gromago-Mascotte.png" alt="Logo Gromago" />
+            </a>
         </div>
     );
 }

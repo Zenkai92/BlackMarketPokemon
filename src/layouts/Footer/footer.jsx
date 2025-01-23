@@ -5,7 +5,7 @@ export default function footer() {
         <div className="footer">
         <footer>
         <a href="#">ToupourleMAGO© 2025</a>
-        <a href="#">Ne pas nous contacter</a>
+        <a href="/Contact">Ne pas nous contacter</a>
         
         </footer>
         </div>

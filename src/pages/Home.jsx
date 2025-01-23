@@ -9,7 +9,7 @@ export default function Home() {
             <Link to = "/Produit">
                 <button>Voir les produits</button>
             </Link>
-            <Link to = "#">
+            <Link to = "/Contact">
                 <button>Pour ne pas nous contacter</button>
             </Link>
                {user ? (

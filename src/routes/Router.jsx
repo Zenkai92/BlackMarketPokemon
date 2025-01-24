@@ -19,7 +19,14 @@ export default function Router() {
           }
         />
 
-        <Route path="/Produit" element={<PrivateRoute><FetchPokemon /></PrivateRoute>} />
+        <Route
+          path="/Produit"
+          element={
+            <PrivateRoute>
+              <FetchPokemon />
+            </PrivateRoute>
+          }
+        />
         <Route path="/Contact" element={<Contact />} />
         <Route path="*" element={<Page404 />} />
       </Routes>

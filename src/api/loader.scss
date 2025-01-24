@@ -1,164 +1,56 @@
 @import "../index.css";
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f2c94c; /* Couleur jaune Pikachu */
-  font-family: "Pokemon", Arial, sans-serif;
-
-  &__content {
-    width: 50%;
-    text-align: center;
-  }
-}
-
+/* From Uiverse.io by JaydipPrajapati1910 */ 
 .loader {
-  width: 100px;
-  height: 100px;
   position: relative;
-  border: 10px solid #3b4cca; /* Bleu Pokémon */
-  border-top: 10px solid #ff0000; /* Rouge Pokémon */
+  width: 160px;
+  height: 160px;
+  border: 4px solid #282828;
+  overflow: hidden;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* La Poké Ball au centre */
-  &::before {
-    content: "";
-    width: 20%;
-    height: 20%;
-    background-color: #fff;
-    border: 4px solid #000;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 2;
-  }
-
-  &::after {
-    content: "Chargement Pokémon...";
-    position: absolute;
-    font-size: 1.5rem;
-    color: #3b4cca;
-    top: 130%;
-    text-transform: uppercase;
-  }
+  box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+    10px 10px 10px rgba(0, 0, 0, 0.4),
+    inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+    inset 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 
-@keyframes spin {
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  z-index: 10;
+  background: #212121;
+  border-radius: 50%;
+  border: 2px solid #292929;
+  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.loader span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    -225deg,
+    #ff3535 0%,
+    #000000 50%,
+    #ffffff 100%
+  );
+  filter: blur(20px);
+  z-index: -1;
+  animation: animate 0.5s linear infinite;
+}
+
+@keyframes animate {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
-  }
-}
-
-.error {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ff0000; /* Rouge Pokémon */
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 2px solid #000;
-  width: fit-content;
-  margin: 0 auto;
-}
-
-.pokemon-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  background-color: #f7f7f7;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.pokemon-card {
-  width: 150px;
-  background-color: #3b4cca; /* Bleu Pokémon */
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    border: 3px solid #ffcc01; /* Jaune Pokémon */
-    border-radius: 50%;
-    background-color: #fff;
-  }
-
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: capitalize;
-    color: #ffcc01; /* Jaune Pokémon */
-  }
-}
-
-.pokemon-details {
-  margin-top: 20px;
-  text-align: center;
-  background-color: #ffcc01; /* Jaune Pokémon */
-  color: #3b4cca; /* Bleu Pokémon */
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  img {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-    border: 4px solid #3b4cca;
-    border-radius: 50%;
-    background-color: #fff;
-  }
-
-  p {
-    font-size: 1.2rem;
-    margin: 5px 0;
-    strong {
-      color: #000;
-    }
-  }
-
-  button {
-    background-color: #ff0000; /* Rouge Pokémon */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #d40000; /* Rouge foncé */
-    }
   }
 }
